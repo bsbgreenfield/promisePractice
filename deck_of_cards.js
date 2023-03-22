@@ -31,7 +31,7 @@ axios.get(`${baseURL}/new/shuffle/?deck_count=1`)
 
 const cardContainer = document.querySelector('#card-container')
 
-function generateCardMarkup(card){
+function generateCardMarkup(card) {
     let cardWrapper = document.createElement('div')
     let cardImage = document.createElement('img')
     cardImage.src = card.image
@@ -41,24 +41,24 @@ function generateCardMarkup(card){
 }
 
 axios.get(`${baseURL}/new/shuffle/?deck_count=1`)
-.then((response) => {
-    let button = document.createElement('button')
-    button.innerText = 'Click For Card'
-    axios.get(`${baseURL}/${response.data.deck_id}/draw/?count=52`)
-    .then((allcards) => {
-        document.body.prepend(button)
-        let counter = 0
-        button.addEventListener('click', function(){
-            if(counter <= 51){
-                generateCardMarkup(allcards.data.cards[counter])
-                counter ++;
-            }
-           else{
-            button.innerText = 'no more cards'
-            button.style.border = '1px solid red'
-           }
-        })
-        console.log(allcards)
+    .then((response) => {
+        let button = document.createElement('button')
+        button.innerText = 'Click For Card'
+        axios.get(`${baseURL}/${response.data.deck_id}/draw/?count=52`)
+            .then((allcards) => {
+                document.body.prepend(button)
+                let counter = 0
+                button.addEventListener('click', function () {
+                    if (counter <= 51) {
+                        generateCardMarkup(allcards.data.cards[counter])
+                        counter++;
+                    }
+                    else {
+                        button.innerText = 'no more cards'
+                        button.style.border = '1px solid red'
+                    }
+                })
+                console.log(allcards)
+            })
     })
-})
 
