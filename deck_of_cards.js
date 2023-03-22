@@ -1,6 +1,17 @@
 baseURL = 'https://deckofcardsapi.com/api/deck'
 
+//part 1
+/* axios.get(`${baseURL}/new/shuffle/?deck_count=1`)
+.then((response) => {
+     return axios.get(`${baseURL}/${response.data.deck_id}/draw/?count=1`)
+})
+.then ((response) => {
+    console.log(response.data.cards[0].value, response.data.cards[0].suit)
+})
+ */
 
+
+//part 2
 /* 
 axios.get(`${baseURL}/new/shuffle/?deck_count=1`)
 .then((response) => {
